@@ -4,7 +4,7 @@ import 'react-alice-carousel/lib/alice-carousel.css';
 type Props = {}
 
 const SlickSlider = (props: Props) => {
-  const handleDragStart = (e) => e.preventDefault();
+  const handleDragStart = (e: { preventDefault: () => any; }) => e.preventDefault();
 
 const items = [
   <img src="https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&w=600" key={1} onDragStart={handleDragStart} role="presentation" />,

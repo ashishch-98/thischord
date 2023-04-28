@@ -4,7 +4,7 @@ import SlickSlider from "@/lib/components/SlickSlider";
 import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
 
 export default function Home() {
-  const handleDragStart = (e) => e.preventDefault();
+  const handleDragStart = (e: { preventDefault: () => any; }) => e.preventDefault();
 
   const TrackItems = [
     <Card sx={{ maxWidth: 345 }} key={1} onDragStart={handleDragStart}>
