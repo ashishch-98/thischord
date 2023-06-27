@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
@@ -14,6 +15,9 @@ const items = [
 
 
   return (
+    <Box>
+
+    
     <AliceCarousel  
     autoPlay
     autoPlayStrategy="none"
@@ -24,6 +28,7 @@ const items = [
     touchTracking={false}
     disableButtonsControls
     items={items} />
+    </Box>
   )
 }
 

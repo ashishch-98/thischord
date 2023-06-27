@@ -1,5 +1,6 @@
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { Grid, colors } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -17,6 +18,7 @@ import Typography from "@mui/material/Typography";
 import { alpha, styled } from "@mui/material/styles";
 import Link from "next/link";
 import * as React from "react";
+import style from '../components/style.module.css';
 
 interface Props {
   /**
@@ -43,16 +45,18 @@ export default function Navbar(props: Props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }} style={{background: '#2a2928', color: '#fff'}}>
+      <Typography variant="h6" sx={{ my: 2 }} style={{background:'#000',padding:'30px 0',margin:'0px'}}>
+      <img src="favicon.ico"  role="presentation" width={10}/>
+ 
         this Chord
       </Typography>
       <Divider />
-      <List>
+      <List className={style.navItem}>
         {navItems.map((item) => (
           <Link key={item.link} href={item.link}>
             <ListItem disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemButton sx={{ textAlign: "left" }}>
                 <ListItemText primary={item.title} />
               </ListItemButton>
             </ListItem>
@@ -107,46 +111,67 @@ export default function Navbar(props: Props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  function rgba(arg0: number, arg1: number, arg2: number, arg3: number): import("csstype").Property.Background<string | number> | undefined {
+    throw new Error("Function not implemented.");
+  }
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar component="nav">
+      <AppBar component="nav" style={{ background:'black'}}>
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: "none" } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            this Chord
-          </Typography>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+        <Grid container spacing={2} margin={'2px 0px'}>
+          <Grid xs={2} md={2} textAlign={'center'} alignSelf={'center'} px={1} >
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: "none" } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              
+              This Chord
+            </Typography>
+          </Grid>
+          <Grid xs={9} md={6} alignSelf={'center'}>
+            <Search style={{  width: '100%'}}
+            //rgba(255,255 ,255, 0.27)}}
+        >
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>                                                       
+          </Grid>
+          <Grid xs={12} md={4} alignSelf={'center'}>
+          <Box sx={{ display: { xs: "none", sm: "block" } }}  >
             {navItems.map((item) => (
               <Link href={item.link} key={item.link}>
-                <Button sx={{ color: "#fff" }}>{item.title}</Button>
+                <Button sx={{ color: "#fff" }} className={style.navItem}>{item.title}</Button>
               </Link>
             ))}
-          </Box>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
+          </Box>                                            
+          </Grid>
+          
+        </Grid>
+
+          
+          
+          
+         
         </Toolbar>
       </AppBar>
-      <Box component="nav">
+      <Box component="nav" style={{ background:'black'}}>
         <Drawer
           container={container}
           variant="temporary"
@@ -160,13 +185,16 @@ export default function Navbar(props: Props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              background:'#2a2928',
             },
           }}
+
+         
         >
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ px: 3 }}>
         <Toolbar />
       </Box>
     </Box>

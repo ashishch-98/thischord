@@ -9,9 +9,9 @@ type CardSliderProps = {
 export default function CardsSlider({ items }: CardSliderProps) {
 
   const responsive = {
-    0: { items: 1 },
-    568: { items: 2 },
-    1024: { items: 3 },
+    0: { items: 3 },
+    568: { items: 3 },
+    1024: { items: 4 },
 };
 
   return (
@@ -19,8 +19,8 @@ export default function CardsSlider({ items }: CardSliderProps) {
       <AliceCarousel
         autoPlay
         autoPlayStrategy="none"
-        autoPlayInterval={1000}
-        animationDuration={1000}
+        autoPlayInterval={2500}
+        
         animationType="slide"
         infinite
         touchTracking={false}

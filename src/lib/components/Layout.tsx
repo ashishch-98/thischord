@@ -20,7 +20,7 @@ const Layout = ( { children, pageMetaData  } : LayoutProps) => {
       <header>
         <Navbar />
       </header>
-      <main>{children}</main>
+      <main style={{background: '#000000e3',   color: '#fff'}}>{children}</main>
       <footer></footer>
     </>
   );
